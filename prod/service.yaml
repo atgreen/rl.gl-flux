@@ -1,0 +1,18 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: rlgl-server
+  namespace: default
+spec:
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 8080
+  selector:
+    app: rlgl-server
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

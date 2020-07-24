@@ -1,0 +1,43 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: rlgl-server
+  namespace: staging
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: rlgl-server
+    spec:
+      containers:
+      - name: rlgl-server
+        image: moxielogic/rlgl-server:prod
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        - containerPort: 9101
+          protocol: TCP
+        imagePullPolicy: Always   
+        volumeMounts:
+        - mountPath: /etc/rlgl
+          name: rlgl-server-config
+        env:
+        - name: AWS_ACCESS_KEY
+          valueFrom:
+            configMapKeyRef:
+              name: rlgl-server-config
+              key: AWS_ACCESS_KEY
+        - name: AWS_SECRET_KEY
+          valueFrom:
+            configMapKeyRef:
+              name: rlgl-server-config
+              key: AWS_SECRET_KEY
+      volumes:
+      - name: rlgl-server-config
+        configMap:
+          name: rlgl-server-config
+          items:
+            - key: config.ini
+              path: config.ini
