@@ -4,22 +4,15 @@ apiVersion: v1
 metadata:
   name: rlgl-server
   namespace: staging
-  annotations:
-    service.beta.kubernetes.io/do-loadbalancer-protocol: "http"
-    service.beta.kubernetes.io/do-loadbalancer-algorithm: "round_robin"
-    service.beta.kubernetes.io/do-loadbalancer-tls-ports: "443"
-    service.beta.kubernetes.io/do-loadbalancer-certificate-id: "rlgl-certificate"
-    service.beta.kubernetes.io/do-loadbalancer-redirect-http-to-https: "true"
 spec:
-  type: LoadBalancer
-  selector:
-    app: rlgl-server
   ports:
     - name: http
       protocol: TCP
       port: 80
       targetPort: 8080
-    - name: https
-      protocol: TCP
-      port: 443
-      targetPort: 8080
+  selector:
+    app: rlgl-server
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
