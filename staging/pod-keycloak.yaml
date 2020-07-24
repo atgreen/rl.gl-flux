@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: keycloak
+  namespace: staging
+spec:
+  containers:
+    - name: keycloak
+      image: jboss/keycloak:latest
+      env:
+      - name: KEYCLOAK_USER
+        value: "admin"
+      - name: KEYCLOAK_PASSWORD
+        value: "open"
