@@ -15,13 +15,13 @@ spec:
     spec:
       containers:
       - name: rlgl-server
-        image: moxielogic/rlgl-server:latest
+        image: moxielogic/rlgl-server:prod
         ports:
         - containerPort: 8080
           protocol: TCP
         - containerPort: 9101
           protocol: TCP
-        imagePullPolicy: Always   
+        imagePullPolicy: Always
         volumeMounts:
         - mountPath: /etc/rlgl
           name: rlgl-server-config
@@ -41,5 +41,5 @@ spec:
         configMap:
           name: rlgl-server-config
           items:
-            - key: config.ini
-              path: config.ini
+          - key: config.ini
+            path: config.ini
