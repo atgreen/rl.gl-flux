@@ -4,6 +4,8 @@ kind: Pod
 metadata:
   name: postgresql
   namespace: staging
+  labels:
+    app: postgresql
 spec:
   containers:
     - name: postgresql

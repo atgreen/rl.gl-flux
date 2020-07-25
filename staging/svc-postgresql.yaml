@@ -5,7 +5,7 @@ metadata:
   namespace: staging
 spec:
   selector:    
-    app: rlgl-server
+    app: postgresql
   type: ClusterIP
   ports:  
   - name: postgresql
