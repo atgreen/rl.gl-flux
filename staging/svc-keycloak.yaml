@@ -5,11 +5,11 @@ metadata:
   namespace: staging
 spec:
   selector:    
-    app: rlgl-server
+    app: keycloak
   type: ClusterIP
   ports:  
   - name: keycloak
-    port: 5432
-    targetPort: 5432
+    port: 80
+    targetPort: 8080
     protocol: TCP
     

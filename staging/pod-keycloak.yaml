@@ -4,6 +4,8 @@ kind: Pod
 metadata:
   name: keycloak
   namespace: staging
+  labels:
+    app: keycloak
 spec:
   containers:
     - name: keycloak
