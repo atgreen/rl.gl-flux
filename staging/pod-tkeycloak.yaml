@@ -17,9 +17,6 @@ spec:
         value: "open"
       - name: KEYCLOAK_IMPORT
         value: "/etc/rlgl-server-realm.json"
-      volumeMounts:
-      - mountPath: /etc
-        name: rlgl-server-realm
   volumes:
   - name: rlgl-server-realm
     configMap:
@@ -29,3 +26,6 @@ spec:
         path: rlgl-server-realm.json
         
         
+#      volumeMounts:
+#      - mountPath: /etc
+#        name: rlgl-server-realm
