@@ -9,9 +9,17 @@ metadata:
 spec:
   containers:
     - name: keycloak
-      image: jboss/keycloak:latest
+      image: moxielogic/rlgl-server-keycloak:latest
       env:
       - name: KEYCLOAK_USER
         value: "admin"
       - name: KEYCLOAK_PASSWORD
         value: "open"
+      volumeMounts:
+      - name: rlgl-server-realm
+        mountPath: "/opt/jboss/keycloak/rlgl"
+        readOnly: true
+  volumes:
+  - name: rlgl-server-realm
+    secret:
+      secretName: rlgl-server-realm
