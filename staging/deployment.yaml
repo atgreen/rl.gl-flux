@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: rlgl-server
-        image: moxielogic/rlgl-server:v1.0.0-136-g6ed2907
+        image: moxielogic/rlgl-server:v1.0.0-137-g5bb344f
         ports:
         - containerPort: 8080
           protocol: TCP
