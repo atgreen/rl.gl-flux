@@ -16,9 +16,9 @@ spec:
       env:
       - name: POSTGRES_PASSWORD
         valueFrom:
-	  secretKeyRef:
-	    name: rlgl-secrets
-	    key: keycloak-postgresql-password
+          secretKeyRef:
+            name: rlgl-secrets
+            key: keycloak-postgresql-password
       - name: POSTGRES_USER
         value: "keycloak"
       - name: POSTGRES_DB
