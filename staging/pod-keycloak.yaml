@@ -9,17 +9,24 @@ metadata:
 spec:
   containers:
     - name: keycloak
-      image: moxielogic/rlgl-server-keycloak:latest
+      image: jboss/keycloak:latest
       env:
       - name: KEYCLOAK_USER
         value: "admin"
       - name: KEYCLOAK_PASSWORD
-        value: "open"
-      volumeMounts:
-      - name: rlgl-server-realm
-        mountPath: "/opt/jboss/keycloak/rlgl"
-        readOnly: true
-  volumes:
-  - name: rlgl-server-realm
-    secret:
-      secretName: rlgl-server-realm
+        valueFrom:
+	  secretKeyRef:
+	    name: rlgl-secrets
+	    key: keycloak-admin-password
+      - name: DB_VENDOR
+        value: "postgres"
+      - name: DB_ADDR
+        value: "keycloak-postgresql"
+      - name: DB_USER
+        value: "keycloak"
+      - name: DB_PASSWORD
+        valueFrom:
+	  secretKeyRef:
+	    name: rlgl-secrets
+	    key: keycloak-postgresql-password
+
