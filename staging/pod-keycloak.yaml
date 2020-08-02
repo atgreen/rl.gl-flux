@@ -15,9 +15,9 @@ spec:
         value: "admin"
       - name: KEYCLOAK_PASSWORD
         valueFrom:
-	  secretKeyRef:
-	    name: rlgl-secrets
-	    key: keycloak-admin-password
+          secretKeyRef:
+            name: rlgl-secrets
+            key: keycloak-admin-password
       - name: DB_VENDOR
         value: "postgres"
       - name: DB_ADDR
@@ -26,7 +26,7 @@ spec:
         value: "keycloak"
       - name: DB_PASSWORD
         valueFrom:
-	  secretKeyRef:
-	    name: rlgl-secrets
-	    key: keycloak-postgresql-password
+          secretKeyRef:
+            name: rlgl-secrets
+            key: keycloak-postgresql-password
 
