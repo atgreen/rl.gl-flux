@@ -28,12 +28,12 @@ spec:
         env:
         - name: AWS_ACCESS_KEY
           valueFrom:
-            configMapKeyRef:
+            secretKeyRef:
               name: rlgl-server-config
               key: AWS_ACCESS_KEY
         - name: AWS_SECRET_KEY
           valueFrom:
-            configMapKeyRef:
+            secretKeyRef:
               name: rlgl-server-config
               key: AWS_SECRET_KEY
       volumes:
