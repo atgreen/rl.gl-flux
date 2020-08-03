@@ -1,0 +1,32 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: keycloak
+  namespace: default
+  labels:
+    app: keycloak
+spec:
+  containers:
+    - name: keycloak
+      image: jboss/keycloak:latest
+      env:
+      - name: KEYCLOAK_USER
+        value: "admin"
+      - name: KEYCLOAK_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: rlgl-secrets
+            key: keycloak-admin-password
+      - name: DB_VENDOR
+        value: "postgres"
+      - name: DB_ADDR
+        value: "keycloak-postgresql"
+      - name: DB_USER
+        value: "keycloak"
+      - name: DB_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: rlgl-secrets
+            key: keycloak-postgresql-password
+

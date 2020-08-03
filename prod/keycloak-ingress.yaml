@@ -1,17 +1,17 @@
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: ingress-rlgl-server
+  name: ingress-keycloak
   namespace: default
   annotations:
     # use the shared ingress-nginx
     kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
-  - host: rl.gl
+  - host: keycloak.rl.gl
     http:
       paths:
       - path: /
         backend:
-          serviceName: rlgl-server
+          serviceName: keycloak
           servicePort: 80

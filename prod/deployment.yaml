@@ -4,6 +4,8 @@ kind: Deployment
 metadata:
   name: rlgl-server
   namespace: default
+  annotations:
+    fluxcd.io/automated: "true"
 spec:
   replicas: 1
   template:
@@ -13,31 +15,41 @@ spec:
     spec:
       containers:
       - name: rlgl-server
-        image: moxielogic/rlgl-server:prod
+        image: moxielogic/rlgl-server:v1.0.0-140-g2169b36
         ports:
         - containerPort: 8080
           protocol: TCP
         - containerPort: 9101
           protocol: TCP
-        imagePullPolicy: Always   
+        imagePullPolicy: Always
         volumeMounts:
         - mountPath: /etc/rlgl
           name: rlgl-server-config
         env:
+        - name: KEYLOAK_OIDC_CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: rlgl-secrets
+              key: keycloak-oidc-client-secret
+        - name: POSTGRESQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: rlgl-secrets
+              key: rlgl-postgresql-password
         - name: AWS_ACCESS_KEY
           valueFrom:
-            configMapKeyRef:
-              name: rlgl-server-config
+            secretKeyRef:
+              name: rlgl-secrets
               key: AWS_ACCESS_KEY
         - name: AWS_SECRET_KEY
           valueFrom:
-            configMapKeyRef:
-              name: rlgl-server-config
+            secretKeyRef:
+              name: rlgl-secrets
               key: AWS_SECRET_KEY
       volumes:
       - name: rlgl-server-config
         configMap:
           name: rlgl-server-config
           items:
-            - key: config.ini
-              path: config.ini
+          - key: config.ini
+            path: config.ini
