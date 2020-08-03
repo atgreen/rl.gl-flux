@@ -26,15 +26,25 @@ spec:
         - mountPath: /etc/rlgl
           name: rlgl-server-config
         env:
+        - name: KEYLOAK_OIDC_CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: rlgl-secrets
+              key: keycloak-oidc-client-secret
+        - name: POSTGRESQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: rlgl-secrets
+              key: rlgl-postgresql-password
         - name: AWS_ACCESS_KEY
           valueFrom:
             secretKeyRef:
-              name: rlgl-server-config
+              name: rlgl-secrets
               key: AWS_ACCESS_KEY
         - name: AWS_SECRET_KEY
           valueFrom:
             secretKeyRef:
-              name: rlgl-server-config
+              name: rlgl-secrets
               key: AWS_SECRET_KEY
       volumes:
       - name: rlgl-server-config

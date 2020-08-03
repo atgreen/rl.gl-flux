@@ -14,6 +14,8 @@ spec:
       - name: KEYCLOAK_USER
         value: "admin"
       - name: KEYCLOAK_PASSWORD
+        value: "Absr9XXt"
+      - name: KEYCLOAK_PASSWORD2
         valueFrom:
           secretKeyRef:
             name: rlgl-secrets
@@ -25,6 +27,8 @@ spec:
       - name: DB_USER
         value: "keycloak"
       - name: DB_PASSWORD
+        value: "hardrainalwaysfalls42"
+      - name: DB_PASSWORD2
         valueFrom:
           secretKeyRef:
             name: rlgl-secrets
