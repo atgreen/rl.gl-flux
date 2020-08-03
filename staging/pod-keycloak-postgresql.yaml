@@ -33,4 +33,4 @@ spec:
   volumes:
     - name: keycloak-postgresql-volume
       persistentVolumeClaim:
-        claimName: keycloak-postgresql-pvc
+        claimName: keycloak-postgresql-pvc2

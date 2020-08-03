@@ -33,4 +33,4 @@ spec:
   volumes:
     - name: rlgl-volume
       persistentVolumeClaim:
-        claimName: rlgl-pvc
+        claimName: rlgl-pvc2

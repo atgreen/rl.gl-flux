@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: keycloak-postgresql-pvc
+  name: keycloak-postgresql-pvc2
   namespace: staging
 spec:
   accessModes:
