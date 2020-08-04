@@ -1,0 +1,1 @@
+kubectl exec postgresql -- bash -c "psql -U rlgl rlgl -c \"insert into policy_bound_api_keys values ('0LIBFFI-0LIBFFI-0LIBFFI-0LIBFFI', 'https://github.com/libffi/rlgl-policy.git');\""
