@@ -7,7 +7,7 @@ metadata:
     # use the shared ingress-nginx
     kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/proxy-body-size: 100m
-  spec:
+spec:
   rules:
   - host: rl.gl
     http:
