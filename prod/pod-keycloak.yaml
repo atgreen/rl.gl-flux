@@ -12,7 +12,7 @@ spec:
       image: jboss/keycloak:latest
       env:
       - name: PROXY_ADDRESS_FORWARDING
-        value: true
+        value: "true"
       - name: KEYCLOAK_USER
         value: "admin"
       - name: KEYCLOAK_PASSWORD

@@ -10,9 +10,15 @@ spec:
   containers:
     - name: keycloak
       image: jboss/keycloak:latest
+      livenessProbe:
+        httpGet:
+          path: /auth/realms/master
+          port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 3
       env:
       - name: PROXY_ADDRESS_FORWARDING
-        value: true
+        value: "true"
       - name: KEYCLOAK_USER
         value: "admin"
       - name: KEYCLOAK_PASSWORD
